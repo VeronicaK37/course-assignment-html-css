@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout - Rainydays</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://kit.fontawesome.com/5aa3af0107.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="top-bar">
+    <div class="announcement-wrapper">
+      <span class="announcement">No matter the weather, free shipping on orders over 1,300 NOK.</span>
+      <i class="fas fa-globe globe-icon" aria-hidden="true"></i>
+    </div>
+  </div>
+
+  <header class="main-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html"><img class="Logo-RainyDays" src="image/Logo-RainyDays.png" alt="Rainydays logo" /></a>
+      </div>
+      <nav class="main-nav" aria-label="Main menu">
+        <ul>
+          <li><a href="p2-product-list.html">WOMEN</a></li>
+          <li><a href="p2-product-list.html">MEN</a></li>
+          <li><a href="p2-product-list.html">OUTLET</a></li>
+          <li><a href="p2-product-list.html">ACTIVITY</a></li>
+        </ul>
+      </nav>
+      <div class="icons">
+        <a href="#" class="icon-link" aria-label="Search"><i class="fas fa-search"></i></a>
+        <a href="#" class="icon-link" aria-label="My page"><i class="fas fa-user"></i></a>
+        <a href="#" class="icon-link" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+        <a href="#" class="icon-link" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrapper checkout-grid">
+    <section class="checkout-form">
+      <div class="form-section">
+        <label for="email" class="form-label">Contact</label>
+        <input type="email" id="email" class="form-field" placeholder="Email address">
+      </div>
+      <div class="form-checkbox">
+        <input type="checkbox" id="offers">
+        <label for="offers">Yes, I’d love to be the first to hear about exclusive offers and news.</label>
+      </div>
+
+      <div class="form-section">
+        <label for="country" class="form-label">Delivery</label>
+        <select id="country" class="form-field"><option>Country/region</option></select>
+      </div>
+
+      <div class="even-columns">
+        <input type="text" class="form-field" placeholder="First name">
+        <input type="text" class="form-field" placeholder="Surname">
+      </div>
+      <input type="text" class="form-field" placeholder="Company (optional)">
+      <input type="text" class="form-field" placeholder="Address">
+      <input type="text" class="form-field" placeholder="Apartment, floor, etc. (optional)">
+      <div class="even-columns">
+        <input type="text" class="form-field" placeholder="Postal code">
+        <input type="text" class="form-field" placeholder="City">
+      </div>
+      <input type="text" class="form-field" placeholder="Telephone">
+
+      <div class="form-checkbox">
+        <input type="checkbox" id="save-info">
+        <label for="save-info">Save this information for next time</label>
+      </div>
+
+      <div class="form-checkbox">
+        <input type="checkbox" id="sms-offer">
+        <label for="sms-offer">Send me offers and news by SMS</label>
+      </div>
+
+      <a href="p6-confirmation.html" class="cta cta-box"><i class="fas fa-arrow-left"></i> Check out</a>
+    </section>
+
+    <section class="order-summary">
+      <h2>Order summary (1 item)</h2>
+      <div class="checkout-product-row">
+        <img class="checkout-product-row-img" src="image/jacket3-boundless-riding-pro.jpg" alt="Riding Jacket">
+        <div>
+          <p class="product-title">Riding Jacket</p>
+          <p>Men's, Black L</p>
+          <p>Quantity: 1</p>
+        </div>
+        <div class="price">NOK 2,000.00</div>
+      </div>
+      <div class="checkout-summary-box">
+        <p>Subtotal: <span>NOK 2,000.00</span></p>
+        <p>Shipping: <span>Free</span></p>
+        <p><strong>Total:</strong> <span>NOK 2,000.00</span></p>
+      </div>
+
+      <div class="checkout-features">
+        <div><strong>Free<br>Shipping</strong></div>
+        <div><strong>Free<br>returns</strong></div>
+        <div><strong>Limited<br>warranty</strong></div>
+      </div>
+
+      <div class="checkout-support">
+        <p><strong>Free returns</strong><br>Free returns on eligible items purchased within the last 30 days</p>
+        <p><strong>Need help with your order?</strong><br>9am–5pm, Monday to Friday<br>Call <strong>00471234566</strong></p>
+        <p><strong>Contact us</strong><br><a href="#">Leave feedback</a> on your checkout experience</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>About us</div>
+    <div>Terms & Conditions</div>
+    <div class="highlight">Your opinion matters</div>
+    <div>Sign up for our newsletter</div>
+    <div><img class="Logo-RainyDays" src="image/Logo-RainyDays.png" alt="Rainydays logo"></div>
+  </footer>
+</body>
+</html>
+

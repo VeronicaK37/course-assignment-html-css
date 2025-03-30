@@ -1,4 +1,4 @@
-/* Reset and Base Styles */
+/* Global Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,10 +10,13 @@ html, body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  color: #000;
+  background-color: #fff;
 }
 
 body {
   flex: 1;
+  line-height: 1.6;
 }
 
 img {
@@ -21,40 +24,14 @@ img {
   display: block;
 }
 
+/* Layout Utility */
 .wrapper {
   max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-/* Utility */
-.cta-box {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #000;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  margin: 20px 10px 10px 0;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.cta-box:hover {
-  background-color: #333;
-}
-
-/* Header */
-.logo img, .Logo-RainyDays {
-  height: 50px;
-}
-
-.logo {
-  flex: 1;
-  justify-content: center;
-  width: 100%;
-}
-
+/* Top Bar */
 .top-bar {
   background-color: #0f1f1f;
   color: white;
@@ -63,30 +40,28 @@ img {
 }
 
 .announcement-wrapper {
-  position: relative;
   text-align: center;
 }
 
 .announcement {
-  display: block;
   font-size: 14px;
 }
 
 .globe-icon {
   position: absolute;
-  right: 0;
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
 }
 
+/* Header */
 .main-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   padding: 20px;
   flex-wrap: wrap;
-  position: relative;
 }
 
 .header-inner {
@@ -97,60 +72,110 @@ img {
   gap: 20px;
 }
 
-#menu-toggle {
-  display: none;
-}
-
-.hamburger {
-  display: none;
-  font-size: 24px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.main-nav {
-  display: flex;
-  flex: 2;
-  gap: 20px;
+.logo img {
+  height: 50px;
 }
 
 .main-nav ul {
   display: flex;
   gap: 20px;
   list-style: none;
-  justify-content: center;
 }
 
 .main-nav a {
   text-decoration: none;
-  color: #000;
   font-weight: bold;
+  color: #000;
   font-size: 16px;
-  padding: 5px 8px;
-  transition: background-color 0.3s, color 0.3s;
-  border-radius: 4px;
+  transition: color 0.3s;
 }
 
-.main-nav a:hover {
+.nav-link:hover {
   color: #F7FF62;
-  background-color: #102124;
 }
 
+/* Icons */
 .icons {
   display: flex;
   gap: 15px;
   align-items: center;
-  flex: 1;
-  justify-content: flex-end;
 }
 
-.icons i {
+.icon-link i {
   font-size: 20px;
   color: #000;
+  transition: color 0.3s;
 }
 
-.icons i:hover {
+.icon-link:hover i {
   color: #ffcc00;
+}
+
+/* Product List */
+.product-list-page h1.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+#layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.layout-item {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.layout-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.p-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0 5px;
+}
+
+.p-desc {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.p-price {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ready-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.ready-btn:hover {
+  background-color: #ffcc00;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Footer */
@@ -160,151 +185,48 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
   flex-wrap: wrap;
-  margin-top: auto;
-  z-index: 10;
-  position: relative;
-}
-
-.footer div {
-  margin: 10px;
+  padding: 20px;
   font-size: 14px;
 }
 
-.footer .highlight,
-.footer div:first-child {
-  color: #ff0;
-}
-
-/* Hero */
-.hero {
-  position: relative;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.hero-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.footer a {
   color: white;
-  font-size: 3rem;
-  font-weight: bold;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+  text-decoration: none;
 }
 
-.highlight-yellow {
-  color: yellow;
+.footer a:hover {
+  text-decoration: underline;
 }
 
-/* Shop Section */
-.shop-section {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 40px 20px;
-  background-color: #fff;
-}
-
-.shop-category {
-  text-align: center;
-  color: inherit;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.shop-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.shop-category:hover img {
-  transform: scale(1.03);
-}
-
-.shop-category:hover h2 {
-  color: #F7FF62;
-  background-color: #102124;
-}
-
-.shop-category img {
-  width: 300px;
-  height: auto;
-  border-radius: 12px;
-}
-
-.shop-category h2 {
-  margin-top: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.shop-links {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  padding: 40px 20px;
-}
-
-.circle-link {
-  text-align: center;
-}
-
-.circle-link img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.circle-link span {
-  display: block;
-  margin-top: 10px;
+.footer .highlight a {
+  color: #ff0;
   font-weight: bold;
 }
 
 /* Responsive */
-@media screen and (max-width: 767px) {
-  .hamburger {
-    display: block;
-  }
-
+@media (max-width: 767px) {
   .main-header {
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .main-nav {
-    display: none;
+  .main-nav ul {
     flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  #menu-toggle:checked + .hamburger + .main-nav {
-    display: flex;
+    gap: 10px;
   }
 
   .icons {
-    flex-direction: row;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    width: 100%;
-    margin-top: 10px;
   }
 
-  .top-bar,
+  #layout {
+    grid-template-columns: 1fr;
+  }
+
   .footer {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .cta-box {
-    width: 100%;
-    margin: 10px 0;
   }
 }

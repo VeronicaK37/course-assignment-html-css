@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Order Confirmed - Rainydays</title>
+  <meta name="description" content="Your Rainydays order is confirmed. Explore more gear or track your shipment." />
+  <title>Order Confirmation - Rainydays</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://kit.fontawesome.com/5aa3af0107.js" crossorigin="anonymous"></script>
 </head>
@@ -17,28 +18,33 @@
 
   <header class="main-header">
     <div class="header-inner">
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
+
       <div class="logo">
         <a href="index.html"><img class="Logo-RainyDays" src="image/Logo-RainyDays.png" alt="Rainydays logo" /></a>
       </div>
+
       <nav class="main-nav" aria-label="Main menu">
         <ul>
-          <li><a href="p2-product-list.html">WOMEN</a></li>
-          <li><a href="p2-product-list.html">MEN</a></li>
-          <li><a href="p2-product-list.html">OUTLET</a></li>
-          <li><a href="p2-product-list.html">ACTIVITY</a></li>
+          <li><a href="p2-product-list.html" class="nav-link">WOMEN</a></li>
+          <li><a href="p2-product-list.html" class="nav-link">MEN</a></li>
+          <li><a href="p2-product-list.html" class="nav-link">OUTLET</a></li>
+          <li><a href="p2-product-list.html" class="nav-link">ACTIVITY</a></li>
         </ul>
       </nav>
+
       <div class="icons">
-        <a href="#" class="icon-link" aria-label="Search"><i class="fas fa-search"></i></a>
-        <a href="#" class="icon-link" aria-label="My page"><i class="fas fa-user"></i></a>
-        <a href="#" class="icon-link" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
-        <a href="#" class="icon-link" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
+        <a href="p5-comeback.html" class="icon-link" aria-label="Search"><i class="fas fa-search"></i></a>
+        <a href="p5-comeback.html" class="icon-link" aria-label="My page"><i class="fas fa-user"></i></a>
+        <a href="p5-comeback.html" class="icon-link" aria-label="Wishlist"><i class="fas fa-heart"></i></a>
+        <a href="p5-comeback.html" class="icon-link" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
       </div>
     </div>
   </header>
 
   <main class="wrapper confirmation-page">
-    <section class="confirmation-hero">
+    <section class="confirmation-section">
       <div class="confirmation-icon">
         <i class="fas fa-check-circle fa-4x"></i>
       </div>
@@ -47,7 +53,7 @@
       <a href="index.html" class="cta cta-box">Continue shopping</a>
     </section>
 
-    <section class="confirmation-details">
+    <section class="confirmation-summary">
       <div class="checkout-product-row">
         <img class="checkout-product-row-img" src="image/jacket3-boundless-riding-pro.jpg" alt="Riding Jacket">
         <div>
@@ -65,18 +71,18 @@
       </div>
 
       <div class="checkout-support">
-        <p><strong>Free returns</strong><br>Free returns on eligible items purchased within the last 30 days</p>
-        <p><strong>Need help with your order?</strong><br>9am–5pm, Monday to Friday<br>Call <strong>00471234566</strong></p>
-        <p><strong>Contact us</strong><br><a href="#">Leave feedback</a> on your checkout experience</p>
+        <p><strong>Free returns</strong><br>Eligible items returned within 30 days</p>
+        <p><strong>Need help with your order?</strong><br>9am–5pm, Mon–Fri<br>Call <strong>00471234566</strong></p>
+        <p><strong>Contact us</strong><br><a href="p5-comeback.html">Leave feedback</a> on your checkout experience</p>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div>About us</div>
-    <div>Terms & Conditions</div>
-    <div class="highlight">Your opinion matters</div>
-    <div>Sign up for our newsletter</div>
+    <div><a href="p5-comeback.html">About us</a></div>
+    <div><a href="p5-comeback.html">Terms & Conditions</a></div>
+    <div><a href="p5-comeback.html" class="highlight">Your opinion matters</a></div>
+    <div><a href="p5-comeback.html">Sign up for our newsletter</a></div>
     <div><img class="Logo-RainyDays" src="image/Logo-RainyDays.png" alt="Rainydays logo"></div>
   </footer>
 </body>

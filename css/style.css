@@ -1,22 +1,64 @@
-/* Global Reset and Base Styles */
+/* =========================================================
+   Rainydays - style.css (REPLACEABLE VERSION)
+   Markers:
+   - [UNCHANGED] keep original behavior
+   - [CHANGED]   modify existing behavior
+   - [ADDED]     new styles for improved homepage + reuse
+   ========================================================= */
+
+/* =========================
+   Global Reset and Base
+   ========================= */
+
+/* [UNCHANGED] */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* [CHANGED]  The original HTML and body elements were both flexbox, which could affect certain layout elements.
+
+The solution is to make only the body a flex container, ensuring the footer can be pushed to the bottom,
+
+while not interfering with other layout elements. */
 html, body {
   height: 100%;
   font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
   color: #000;
   background-color: #fff;
 }
 
 body {
-  flex: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
   line-height: 1.6;
+}
+
+/* [ADDED] Let the main element automatically take up space, 
+making the footer more stable and attached to the bottom. 
+html：
+<body>
+  <header>header</header>
+  <main>main</main>
+  <footer>footer</footer>
+</body>
+css：
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+main {
+  flex: 1;
+}
+Browser window height (100vh). Minus the height used by the 
+header and footer. The remaining height → All goes to the main window:
+This is called [the main window taking up all the space].
+*/
+main {
+  flex: 1;
 }
 
 img {
@@ -24,14 +66,53 @@ img {
   display: block;
 }
 
-/* Layout Utility */
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
+/* [ADDED] Basic Accessibility: Visible with keyboard focus(applies to all pages) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid #F7FF62;
+  outline-offset: 3px;
 }
 
-/* Top Bar */
+/* [ADDED] container = spare tool 
+General container and block spacing 
+(for reuse on the homepage and subsequent pages) 
+
+*/
+.container {
+  /* Limit maximum content width */
+  max-width: 1200px;
+  /* Center page content */
+  margin: 0 auto; 
+  /* Unify left and right padding */
+  padding: 0 20px;
+}
+
+.section {
+  padding: 48px 0;
+}
+
+/* [ADDED] A universal card system 
+(for homepage shop-cards, future product cards, etc.) */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  /* transition: Property1 Time easing, Property2 Time easing; */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   Top Bar
+   ========================= */
+
+
 .top-bar {
   background-color: #0f1f1f;
   color: white;
@@ -39,7 +120,10 @@ img {
   position: relative;
 }
 
+/* [CHANGED] Keep the text centered while allowing 
+the right-side button to be positioned. */
 .announcement-wrapper {
+  position: relative;
   text-align: center;
 }
 
@@ -47,21 +131,43 @@ img {
   font-size: 14px;
 }
 
+/* [CHANGED] make it a "borderless button + still maintaining the top-right positioning". */
 .globe-icon {
   position: absolute;
   right: 20px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 16px;
+
+  background: transparent;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 999px;
+}
+.globe-icon:hover {
+  filter: brightness(1.1);
 }
 
-/* Header */
+/* =========================
+   Header + Nav
+   ========================= */
+
+/* [CHANGED]  adding a sticky texture and light shadows makes it look more
+like an e-commerce homepage*/
 .main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   flex-wrap: wrap;
+
+  position: sticky; 
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
 .header-inner {
@@ -74,6 +180,33 @@ img {
 
 .logo img {
   height: 50px;
+}
+
+/* [ADDED] the hamburger button is hidden by default (desktop version) */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+.hamburger i {
+  font-size: 22px;
+}
+.hamburger:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* [ADDED] the accessibility of the checkbox is visually hidden, but it can still
+be recognized by screen readers */
+#menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 .main-nav ul {
@@ -111,13 +244,196 @@ img {
   color: #ffcc00;
 }
 
-/* Product List */
+/* =========================
+   Homepage - Hero
+   ========================= */
+
+/* [ADDED] Hero more suitable for e-commerce: fixed height, cropping, masking, text and CTA */
+.hero {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero img {
+  width: 100%;
+  height: clamp(320px, 55vh, 560px);
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+/* [ADDED] masking makes text clearer */
+/* a mask/overlay requires a "separate layer",
+【::after】遮罩层 can add an extra layer without changing the HTML structure. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.05));
+  z-index: 0;
+}
+
+/* [ADDED] hero-content:push the comfort zone */
+.hero-content {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 24px;
+  z-index: 1;
+  max-width: 900px;
+}
+
+/* [CHANGED] Brand slogan */
+.hero-text {
+  color: #fff;
+  font-size: clamp(28px, 4vw, 52px);
+  letter-spacing: 1px;
+}
+
+.hero-subtitle {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 16px;
+  max-width: 48ch;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.highlight-yellow {
+  color: #F7FF62;
+}
+
+/* =========================
+   Buttons (CTA)
+   ========================= */
+
+/* [ADDED] Universal button system (reusable on homepage CTA and subsequent pages) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #0f1f1f;
+  color: #fff;
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f1f1f;
+  border-color: #ddd;
+}
+.btn-ghost:hover {
+  background: #fff;
+}
+
+/* =========================
+   Homepage - Shop Section
+   ========================= */
+
+/* [ADDED]  the two large category cards on the homepage resemble those of an 
+e-commerce platform: they are spaced out, centered, and responsive*/
+.shop-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* minmax(0, 1fr) is a safer and more modern way of writing grid-template-columns: repeat(2, 1fr);
+. */
+  gap: 22px;
+  padding: 28px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.shop-category {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* [CHANGED] to match the unified style of .card. */
+.shop-card {
+  background: #fff;
+  text-align: center;
+}
+
+.shop-card h2 {
+  padding: 14px 12px;
+  font-size: 20px;
+}
+
+/* =========================
+   Homepage - Quick Links (circle-link)
+   ========================= */
+
+/* [CHANGED] the circle-link is changed from a div to an a tag.
+Make it a clickable entry point here and give it hover/focus effects.*/
+
+.shop-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 20px 20px 48px;
+  flex-wrap: wrap;
+}
+
+.circle-link {
+  width: 160px;
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+}
+
+.circle-link img {
+  width: 140px;
+  height: 140px;
+  border-radius: 999px;
+  /* A "sufficiently large value" 
+  larger than half the size of the element. 
+  set the corners to the maximum radius */
+  object-fit: cover;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.circle-link span {
+  font-weight: 800; 
+  letter-spacing: 0.5px; 
+}
+
+.circle-link:hover img {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   Product List (existing)
+   ========================= */
+
+/* [UNCHANGED] */
 .product-list-page h1.page-title {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
+/* [UNCHANGED] */
 #layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -126,6 +442,7 @@ img {
   padding: 0;
 }
 
+/* card*/
 .layout-item {
   background-color: #fff;
   border: 1px solid #eee;
@@ -178,7 +495,11 @@ img {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Footer */
+/* =========================
+   Footer
+   ========================= */
+
+
 .footer {
   background-color: #0f1f1f;
   color: white;
@@ -204,29 +525,74 @@ img {
   font-weight: bold;
 }
 
-/* Responsive */
+/* =========================
+   Responsive 
+   ========================= */
+
 @media (max-width: 767px) {
+  /* [CHANGED] The header is neater on mobile devices. */
   .main-header {
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 14px 16px;
   }
 
+  /* [ADDED] hamburger */
+  .hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* [CHANGED] The nav file is hidden by default; check the "menu-toggle" option to show it 
+  (in conjunction with the new version of index.html). */
+  .main-nav {
+    display: none;
+    width: 100%;
+  }
   .main-nav ul {
     flex-direction: column;
     gap: 10px;
+    padding-top: 10px;
   }
 
+  /* checkbox hack */
+  #menu-toggle:checked ~ .main-nav {
+    display: block;
+  }
+  /* 
+      <input type="checkbox" id="menu-toggle" aria-label="Toggle menu" aria-controls="main-nav"/>
+      <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </label>
+  */
+
+  /* [CHANGED] icons Line breaks are more comfortable on mobile devices. */
   .icons {
     justify-content: flex-start;
     flex-wrap: wrap;
   }
 
+  /* [CHANGED] Hero content is less crowded on mobile devices. */
+  .hero-content {
+    left: 16px;
+    right: 16px;
+    bottom: 18px;
+  }
+
+  /* [CHANGED] Change to a single column */
+  .shop-section {
+    grid-template-columns: 1fr;
+    padding: 22px 16px;
+  }
+
+  /* [UNCHANGED] Your original product list is now compatible. */
   #layout {
     grid-template-columns: 1fr;
   }
 
+  /* [UNCHANGED] Footer arranged vertically */
   .footer {
     flex-direction: column;
     align-items: flex-start;
+    gap: 10px;
   }
 }

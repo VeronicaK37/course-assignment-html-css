@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Rainydays official homepage – Explore waterproof jackets for men and women. Gear up for every adventure." />
-  <title>Rainydays Home| Waterproof Outdoor Jackets</title>
+  <meta name="description" content="Rainydays official homepage - Explore waterproof jackets for men and women. Gear up for every adventure."" />
+  <title>Rainydays Home | Waterproof Outdoor Jackets</title>
   <link rel="stylesheet" href="css/style.css" />
   <script src="https://kit.fontawesome.com/5aa3af0107.js" crossorigin="anonymous"></script>
 </head>
@@ -13,21 +13,40 @@
   <div class="top-bar">
     <div class="announcement-wrapper">
       <span class="announcement">No matter the weather, free shipping on orders over 1,300 NOK.</span>
-      <i class="fas fa-globe globe-icon" aria-hidden="true"></i>
+      <!-- add button -->
+      <button class="globe-icon" type="button" aria-label="language and region"> 
+        <i class="fas fa-globe globe-icon" aria-hidden="true"></i>
+      </button>
     </div>
   </div>
 
   <!-- Header -->
-  <header class="main-header">
+   <!-- industry standard approach (very important)
+  <header>
+    <div class="inner / container / wrapper">
+    </div>
+  </header> 
+  -->
+  <!-- page-level container -->
+  <header class="main-header"> 
+  <!-- content layout container (skeleton) -->
     <div class="header-inner">
-      <input type="checkbox" id="menu-toggle" />
-      <label for="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
+
+      <!-- add aria-controls / aria-label: Toggle menu / main-nav-->
+      <input type="checkbox" id="menu-toggle" aria-label="Toggle menu" aria-controls="main-nav"/>
+      
+      <!-- add aria-label: Open menu -->
+      <label for="menu-toggle" class="hamburger" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </label>
 
       <div class="logo">
-        <a href="index.html"><img class="Logo-RainyDays" src="image/Logo-RainyDays.png" alt="Rainydays logo" /></a>
+        <a href="index.html">
+          <img class="Logo-RainyDays" src="image/Logo-RainyDays.png" alt="Rainydays logo" />
+        </a>
       </div>
-
-      <nav class="main-nav" aria-label="Main menu">
+      <!-- add id="main-nav" for aria-controls -->
+      <nav class="main-nav" id="main-nav" aria-label="Main menu">
         <ul>
           <li><a href="p2-product-list.html" class="nav-link">WOMEN</a></li>
           <li><a href="p2-product-list.html" class="nav-link">MEN</a></li>
@@ -47,39 +66,55 @@
 
   <!-- Main -->
   <main>
-    <section class="hero">
-      <img src="image/heroimage-hiker-in-the-snow.jpg" alt="Hero Banner">
-      <h1 class="hero-text">PUSH THE CO<span class="highlight-yellow">M</span>FORT ZONE</h1>
+    <section class="hero" aria-label="Hero banner">
+      <!-- add change alt content to a more detailed text -->
+      <img src="image/heroimage-hiker-in-the-snow.jpg" alt="Hiker in snowy mountains wearing a Rainydays jacket">
+      <!-- add div to wrap h1 for corresponsive design -->
+      <div class="hero-content">
+        <h1 class="hero-text">PUSH THE CO<span class="highlight-yellow">M</span>FORT ZONE</h1>
+  
+        <!-- add subtitle -->
+        <p class="hero-subtitle">Waterproof jackets made for everyday adventure.</p>
+  
+        <!-- add CTA -->
+        <div class="hero-cta" aria-label="Primary actions">
+          <a href="p2-product-list.html" class="btn btn-primary" aria-label="Shop women's jackets">Shop women</a>
+          <a href="p2-product-list.html" class="btn btn-ghost" aria-label="Shop men's jackets">Shop men</a>
+        </div>
+      </div>
     </section>
 
     <section class="shop-section">
       <a href="p2-product-list.html" class="shop-category" aria-label="Shop men's jackets">
-        <div class="shop-card">
+        <!-- add card to the below div -->
+        <div class="shop-card card">
           <img src="image/shop-catalog-men.jpg" alt="Shop men's">
           <h2>Shop men's</h2>
         </div>
       </a>
       <a href="p2-product-list.html" class="shop-category" aria-label="Shop women's jackets">
-        <div class="shop-card">
+        <!-- add card to the below div -->
+        <div class="shop-card card">
           <img src="image/shop-catalog-women.jpg" alt="Shop women's">
           <h2>Shop women's</h2>
         </div>
       </a>
     </section>
 
-    <section class="shop-links">
-      <div class="circle-link">
-        <img src="image/shop-activity.jpg" alt="Activity">
+    <section class="shop-links" aria-label="Quick links">
+      <!-- change all the three circle-link from <div> to <a> -->
+      <a class="circle-link" href="p2-product-list.html" aria-label="Browse by activity">
+        <img src="image/shop-activity.jpg" alt="Activity category">
         <span>ACTIVITY</span>
-      </div>
-      <div class="circle-link">
-        <img src="image/shop-outlet.jpg" alt="Outlet">
+      </a>
+      <a class="circle-link" href="p2-product-list.html" aria-label="Browse by activity">
+        <img src="image/shop-outlet.jpg" alt="Outlet category">
         <span>OUTLET</span>
-      </div>
-      <div class="circle-link">
-        <img src="image/shop-secondhand.jpg" alt="Secondhand">
+      </a>
+      <a class="circle-link" href="p2-product-list.html" aria-label="Browse by activity">
+        <img src="image/shop-secondhand.jpg" alt="Secondhand category">
         <span>SECONDHAND</span>
-      </div>
+      </a>
     </section>
   </main>
 

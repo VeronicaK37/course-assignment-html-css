@@ -566,6 +566,48 @@ Make it a clickable entry point here and give it hover/focus effects.*/
   */
 
   /* [CHANGED] icons Line breaks are more comfortable on mobile devices. */
+
+/* changed 👇 hamberger menu dropdown */
+/* [ADDED] Make header-inner a positioning reference point */
+  .header-inner {
+    position: relative;
+  }
+
+/* [CHANGED] Menu now has absolute positioning: it appears below the header */
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;          /* below the header-inner header */
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 12px 16px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    border-radius: 12px;
+  }
+
+  /* vertical layout */
+  .main-nav ul {
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 0;    
+
+  /* [CHANGED] a drop-down menu will appear after checking the box */
+  #menu-toggle:checked ~ .main-nav {
+    display: block;
+  }
+
+  /* [ADDED] the default display is "≡", and the "✕" is hidden */
+  .hamburger .icon-close { display: none; }
+  .hamburger .icon-open  { display: inline-block; }
+
+/* [ADDED] When the menu is open: hide "≡" and show "✕" */
+  #menu-toggle:checked + .hamburger .icon-open  { display: none; }
+  #menu-toggle:checked + .hamburger .icon-close { display: inline-block; }
+}
+/* changed 👆 hamberger menu dropdown */
+
+
   .icons {
     justify-content: flex-start;
     flex-wrap: wrap;
